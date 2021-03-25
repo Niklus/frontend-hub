@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
 
 function PostDetail({ posts }) {
   const { key } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (posts.length === 0) {
     return <h1>Loading...</h1>;
