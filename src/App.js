@@ -1,25 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { firebase } from "./utils/firebase";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import PostDetail from "./pages/PostDetail";
+import AdminPage from "./pages/AdminPage";
+import PostUpdate from "./pages/PostUpdate";
+import PostCreate from "./pages/PostCreate";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const postsRef = firebase.database().ref("Posts/");
+    postsRef.on("value", (snap) => {
+      const myPosts = [];
+      snap.forEach((post) => {
+        myPosts.push(post);
+      });
+      setPosts(myPosts);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage posts={posts} />
+          </Route>
+          <Route path="/detail/:key">
+            <PostDetail posts={posts} />
+          </Route>
+          <Route path="/admin">
+            <AdminPage posts={posts} />
+          </Route>
+          <Route path="/update/:key">
+            <PostUpdate posts={posts} />
+          </Route>
+          <Route path="/create">
+            <PostCreate />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
