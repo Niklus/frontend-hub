@@ -20,6 +20,24 @@ function PostDetail({ posts }) {
 
   const post = myPost.val();
 
+  function sharePost() {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: `${post.title}`,
+          text: "Check out this article",
+          url: `${window.location}`,
+        })
+        .then(() => console.log("Successful share"))
+        .catch((error) => console.log("Error sharing", error));
+    } else {
+      window.open(
+        `https://twitter.com/intent/tweet?text=${window.location}`,
+        "_blank"
+      );
+    }
+  }
+
   return (
     <>
       <Header>Frontend Hub</Header>
@@ -32,9 +50,17 @@ function PostDetail({ posts }) {
               className="card-text"
               dangerouslySetInnerHTML={{ __html: post.description }}
             ></div>
-            <Link to={`/`}>
-              <button>Go Back</button>
-            </Link>
+            <div className="detail-btns">
+              <Link to={`/`}>
+                <button className="back-btn">Go Back</button>
+              </Link>
+              <button onClick={sharePost}>
+                <div className="share-btn">
+                  Share &nbsp;
+                  <img src="/share.svg" alt="" height="18px" />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

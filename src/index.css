@@ -99,6 +99,22 @@ button:hover {
   background-color: rgb(1, 85, 85);
 }
 
+.detail-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-btn {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.share-btn {
+  padding: 0px;
+  display: flex;
+}
+
 .form-container {
   width: 400px;
   margin: 10px auto;
