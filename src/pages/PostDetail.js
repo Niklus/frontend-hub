@@ -7,6 +7,7 @@ function PostDetail({ posts }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Frontend Hub | Detail";
   }, []);
 
   if (posts.length === 0) {

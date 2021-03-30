@@ -18,6 +18,10 @@ function AdminPage({ posts }) {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
 
+  useEffect(() => {
+    document.title = "Frontend Hub | Admin";
+  }, []);
+
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }

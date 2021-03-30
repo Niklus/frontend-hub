@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import Header from "../components/Header";
 import { extractContent } from "../utils/extractText";
 
 function HomePage({ posts }) {
+  useEffect(() => {
+    document.title = "Frontend Hub | Home";
+  }, []);
+
   if (posts.length === 0) {
     return <h1>Loading...</h1>;
   }
