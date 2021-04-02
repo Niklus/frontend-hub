@@ -52,7 +52,12 @@ function PostDetail({ posts }) {
             ></div>
             <div className="detail-btns">
               <Link to={`/`}>
-                <button className="back-btn">Go Back</button>
+                <button>
+                  <div className="back-btn">
+                    <img src="/back.svg" alt="" height="18px" />
+                    &nbsp; Go Back
+                  </div>
+                </button>
               </Link>
               <button onClick={sharePost}>
                 <div className="share-btn">

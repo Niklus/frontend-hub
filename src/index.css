@@ -105,14 +105,11 @@ button:hover {
   justify-content: space-between;
 }
 
-.back-btn {
-  padding-top: 11px;
-  padding-bottom: 11px;
-}
-
+.back-btn,
 .share-btn {
   padding: 0px;
   display: flex;
+  align-items: center;
 }
 
 .form-container {
