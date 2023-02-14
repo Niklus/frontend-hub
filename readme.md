@@ -1,6 +1,6 @@
 # Frontend Hub
 
-[LIVE LINK](https://frontendhub.dev)
+[LIVE LINK](https://frontendhub.netlify.app)
 
 Frontend Hub is a simple blog for all front-end development matters.
 
